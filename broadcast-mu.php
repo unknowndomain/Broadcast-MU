@@ -1,9 +1,9 @@
-<?
+<?php
 
 /* 
 	Plugin Name: Broadcast MU
 	Description: Allows you to broadcast your post to multiple blogs on the same installation.
-	Version: 1.1
+	Version: 1.1.1
 	Author: Tom Lynch 
 	Author URI: http://unknowndomain.co.uk/
 	Plugin URI: http://unknowndomain.co.uk/broadcast-mu
@@ -75,8 +75,8 @@ function BMU_new_meta_boxes() {
 		if (current_user_can('publish_posts')):
 			restore_current_blog();
 			?>
-			<p><label <? if ($blog['siteurl'] != get_bloginfo('url')): ?>for="blog[<?= $blog['userblog_id'] ?>]"<? endif ?>><input type="checkbox" <? if ($blog['siteurl'] == get_bloginfo('url')): ?>checked="checked" disabled="disabled"<? else: ?>id="blog[<?= $blog['userblog_id'] ?>]" name="blog[<?= $blog['userblog_id'] ?>]"<? endif ?> /> <?= $blog['blogname'] ?></label></p>
-	<?
+			<p><label <?php if ($blog['siteurl'] != get_bloginfo('url')): ?>for="blog[<?php echo  $blog['userblog_id'] ?>]"<?php endif ?>><input type="checkbox" <?php if ($blog['siteurl'] == get_bloginfo('url')): ?>checked="checked" disabled="disabled"<?php else: ?>id="blog[<?php echo  $blog['userblog_id'] ?>]" name="blog[<?php echo  $blog['userblog_id'] ?>]"<?php endif ?> /> <?php echo  $blog['blogname'] ?></label></p>
+	<?php
 		endif;
 	
 	endforeach;
@@ -101,8 +101,8 @@ function BMU_new_meta_boxes_edit() {
 		if (current_user_can('publish_posts')):
 			restore_current_blog();
 			?>
-			<p><label <? if ($blog['siteurl'] != get_bloginfo('url')): ?>for="blog[<?= $blog['userblog_id'] ?>]"<? endif ?>><input type="checkbox" <? if ($blog['siteurl'] == get_bloginfo('url')): ?>disabled="disabled"<? else: ?>id="blog[<?= $blog['userblog_id'] ?>]" name="blog[<?= $blog['userblog_id'] ?>]"<? endif ?> /> <?= $blog['blogname'] ?></label></p>
-	<?
+			<p><label <?php if ($blog['siteurl'] != get_bloginfo('url')): ?>for="blog[<?php echo  $blog['userblog_id'] ?>]"<?php endif ?>><input type="checkbox" <?php if ($blog['siteurl'] == get_bloginfo('url')): ?>disabled="disabled"<?php else: ?>id="blog[<?php echo  $blog['userblog_id'] ?>]" name="blog[<?php echo  $blog['userblog_id'] ?>]"<?php endif ?> /> <?php echo  $blog['blogname'] ?></label></p>
+	<?php
 		endif;
 	
 	endforeach;
