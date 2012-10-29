@@ -3,7 +3,7 @@
 /* 
 	Plugin Name: Broadcast MU
 	Description: Allows you to broadcast your post to multiple blogs on the same installation.
-	Version: 1.0.1 
+	Version: 1.0.2 
 	Author: Tom Lynch 
 	Author URI: http://unknowndomain.co.uk/
 	Plugin URI: http://unknowndomain.co.uk/broadcast-mu
@@ -95,7 +95,7 @@ function BMU_create_meta_box() {
  *	Runs after the post has been saved and sends post to other blogs.
  */
 function BMU_save_postdata($post_id) {
-	if (did_action('save_post') <= count($_POST['blog'])-1) {
+	if (did_action('save_post') == 1) {
 		global $current_user;
 		get_currentuserinfo();	
 		$users_blogs = BMU_get_blogs_of_user($current_user->ID);
