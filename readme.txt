@@ -78,4 +78,5 @@ Thanks.
 
 == Upgrade Notice ==
 
+= 2.0 =
 This version of Broadcast MU is a total rewrite, it now includes support for categories, tags and post formats, but removes support for rebroadcasting.

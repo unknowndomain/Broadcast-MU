@@ -10,11 +10,11 @@
 		
 		Description: Adds the ability to broadcast from one WordPress blog to another on the same Network installation.
 		
-		Network: true
+		Network: True
 		
 		License: GPLv3
 		
-		Copyright (C) 2011 Tom Lynch
+		Copyright (C) 2012 Tom Lynch
 
 	    This program is free software: you can redistribute it and/or modify
 	    it under the terms of the GNU General Public License as published by
