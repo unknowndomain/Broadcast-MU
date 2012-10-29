@@ -3,7 +3,7 @@
 /* 
 	Plugin Name: Broadcast MU
 	Description: Allows you to broadcast your post to multiple blogs on the same installation.
-	Version: 1.0.2 
+	Version: 1.1
 	Author: Tom Lynch 
 	Author URI: http://unknowndomain.co.uk/
 	Plugin URI: http://unknowndomain.co.uk/broadcast-mu
@@ -41,11 +41,15 @@ function BMU_get_blogs_of_user($id) {
 	$i = 0;
 	foreach ($users_blogs as $blog) {
 		$output[$i]['userblog_id'] = $blog->userblog_id;
-		$output[$i]['blogname'] = $blog->blogname;
 		$output[$i]['domain'] = $blog->domain;
 		$output[$i]['path'] = $blog->path;
 		$output[$i]['site_id'] = $blog->site_id;
 		$output[$i]['siteurl'] = $blog->siteurl;
+		
+		$output[$i]['blogname'] = $blog->blogname;
+		if ($output[$i]['blogname'] == "")	$output[$i]['blogname'] = get_blog_option($blog->userblog_id, 'blogname', false);;
+		if ($output[$i]['blogname'] == "")	$output[$i]['blogname'] = $blog->siteurl;	
+
 		$i++;
 	}	
 	usort($output, "BMU_compare"); 
@@ -79,6 +83,32 @@ function BMU_new_meta_boxes() {
 }
 
 /*
+ *	BMU_new_meta_boxes_edit
+ *	-----------------------
+ *	Prints the meta box to the screen.
+ */
+function BMU_new_meta_boxes_edit() {
+	global $post, $new_meta_boxes, $current_user;
+	
+	get_currentuserinfo();	
+	$users_blogs = BMU_get_blogs_of_user($current_user->ID);
+	
+	echo '<p>Post to:</p>';	
+	
+	foreach ($users_blogs as $blog):
+	
+		switch_to_blog($blog['userblog_id']);
+		if (current_user_can('publish_posts')):
+			restore_current_blog();
+			?>
+			<p><label <? if ($blog['siteurl'] != get_bloginfo('url')): ?>for="blog[<?= $blog['userblog_id'] ?>]"<? endif ?>><input type="checkbox" <? if ($blog['siteurl'] == get_bloginfo('url')): ?>disabled="disabled"<? else: ?>id="blog[<?= $blog['userblog_id'] ?>]" name="blog[<?= $blog['userblog_id'] ?>]"<? endif ?> /> <?= $blog['blogname'] ?></label></p>
+	<?
+		endif;
+	
+	endforeach;
+}
+
+/*
  *	BMU_create_meta_box
  *	-------------------
  *	Creates the meta box and tells Wordpress that BMU_new_meta_boxes will print the contents.
@@ -86,6 +116,18 @@ function BMU_new_meta_boxes() {
 function BMU_create_meta_box() {
 	if ( function_exists('add_meta_box') ) {
 		add_meta_box('BMU_new-meta-boxes', 'Broadcast', 'BMU_new_meta_boxes', 'post', 'side', 'low' );
+	}
+}
+
+/*
+ *	BMU_create_meta_box_edit
+ *	------------------------
+ *	Creates the meta box and tells Wordpress that BMU_new_meta_boxes_edit will print the contents.
+ *  Has the Re-Broadcast title
+ */
+function BMU_create_meta_box_edit() {
+	if ( function_exists('add_meta_box') ) {
+		add_meta_box('BMU_new-meta-boxes', 'Re-Broadcast', 'BMU_new_meta_boxes_edit', 'post', 'side', 'low' );
 	}
 }
 
@@ -130,7 +172,8 @@ function BMU_save_postdata($post_id) {
 	}
 }
 
+if ($_REQUEST['action'] == 'edit') add_action('admin_menu', 'BMU_create_meta_box_edit');  
 if ($_REQUEST['action'] != 'edit') add_action('admin_menu', 'BMU_create_meta_box');  
-if ($_REQUEST['action'] != 'edit') add_action('save_post', 'BMU_save_postdata');  
+add_action('save_post', 'BMU_save_postdata');  
 
 ?>
