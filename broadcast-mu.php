@@ -3,7 +3,7 @@
 /* 
 	Plugin Name: Broadcast MU
 	Description: Allows you to broadcast your post to multiple blogs on the same installation.
-	Version: 1.0 
+	Version: 1.0.1 
 	Author: Tom Lynch 
 	Author URI: http://unknowndomain.co.uk/
 	Plugin URI: http://unknowndomain.co.uk/broadcast-mu

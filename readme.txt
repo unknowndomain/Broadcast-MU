@@ -4,7 +4,7 @@ Donate link: https://donate.cancerresearchuk.org/donate.asp
 Tags: post, broadcast, multicast, wpmu, mu, blogs
 Requires at least: 2.8
 Tested up to: 2.8
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Broadcast MU is a plugin for WordPress MU which allows you to broadcast a post to one or more other blogs on the same installation of WordPress MU.
 
@@ -42,6 +42,9 @@ No, once broadcasted they cannot be modified or deleted simultaneously however y
 2. Close up of the Broadcast MU meta box.
 
 == Changelog ==
+
+= 1.0.1 =
+* Fixes duplicate posting problem and also a php typo.
 
 = 1.0 =
 * Initial release.
