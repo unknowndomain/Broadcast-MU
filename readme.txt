@@ -1,47 +1,34 @@
 === Broadcast MU ===
-Contributors: ctsttom
+Contributors: unknowndomain
 Donate link: https://donate.cancerresearchuk.org/donate.asp
-Tags: post, broadcast, multicast, wpmu, mu, blogs
-Requires at least: 2.8.5.2
-Tested up to: 2.8.6
-Stable tag: 1.1.1
+Tags: post, broadcast, crosspost, cross post, multipost, multicast, wpms, ms, multisite, blogs
+Requires at least: 3.4
+Tested up to: 3.4.2
+Stable tag: 2.0
+License: GPLv3
 
-Broadcast MU is a plugin for WordPress MU which allows you to broadcast a post to one or more other blogs on the same installation of WordPress MU.
+Broadcast MU is a plugin for WordPress which allows you to broadcast a post to one or more other blogs on the same installation of WordPress.
 
 == Description ==
 
-Broadcast MU is a plugin for WordPress MU which allows you to broadcast a post to one or more other blogs on the same installation of WordPress MU by simply checking the box next to those you wish to send it to.
+Broadcast MU is a plugin for WordPress which allows you to broadcast a post to one or more other blogs on the same installation of WordPress by simply checking the box next to those you wish to send it to.
 
 You can enable this plugin on individual blogs or site wide.
 
-This plugin is for WordPress MU only because regular WordPress only supports having one blog anyway.
-
-NOTICE: Broadcast MU does not work when WordPress MU has post revisions enabled, you must disable them in your configuration by adding the following code to your wp-config.php... 
-
-`define('WP_POST_REVISIONS', false);`
+This plugin is for WordPress Multisite installations only because regular WordPress only supports having one blog anyway.
 
 == Installation ==
 
-1. Disable post revisions in your `wp-config.php` by adding `define('WP_POST_REVISIONS', false);`.
+1. Upload `broadcast-mu.php` to the `/wp-content/plugins/` directory.
 
-2. Upload `broadcast-mu.php` to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the Network `Plugins` menu in WordPress.
 
-3. Activate the plugin through the `Plugins` menu in WordPress MU.
-
-4. Create a new post from the `New Post` menu in WordPress MU and tick the blogs you want from the `Broadcast` box.
+3. Create a new post from the `New Post` menu in WordPress and tick the blogs you want from the `Broadcast` box.
 
 == Frequently Asked Questions ==
 
-= Why is it showing loads of errors or not working? =
-This is because of an incompatibility with another plugin or because you have not disabled post revisions by adding the following line of code to your `wp-config.php`... `define('WP_POST_REVISIONS', false);`
-
-If the issue continues after adding that line, disable all plugins to see if it works still, then try turning them all back on one by one testing each time.
-
 = Why can I only see some of the blogs on the site? =
 This is because Broadcast MU only allows you to post to blogs which you have access to publish on.
-
-= Can I enable the plugin for all users on my site? =
-Yes, Either upload it to the `/wp-content/mu-plugins/` directory or in the `Plugins` menu in WordPress MU click 'Activate site wide'.
 
 = Can I choose on which blogs my post will display? =
 Yes, simply click the blogs you want when posting in WordPress.
@@ -53,10 +40,13 @@ No, once broadcasted they cannot be modified or deleted simultaneously however y
 
 1. New post screen with the Broadcast MU meta box.
 2. Close up of the Broadcast MU meta box.
-3. Edit post screen with the Re-Broadcast meta box.
-4. Close up of the Re-Broadcast meta box.
 
 == Changelog ==
+
+= 2.0 =
+* Complete rewrite
+* Looses Rebroadcast feature
+* Now supports categories, tags and post formats.
 
 = 1.1.1 =
 * Fixes a known issue where some installations of PHP do not allow short tags such as <? and <?= these have been substituted with <?php and <?php echo respectively.
@@ -85,3 +75,7 @@ Thanks to Cancer Research UK and the NHS because without their help my families 
 If you want to show thanks for the work I have done making this plugin then  please donate.
 
 Thanks.
+
+== Upgrade Notice ==
+
+This version of Broadcast MU is a total rewrite, it now includes support for categories, tags and post formats, but removes support for rebroadcasting.
