@@ -1,9 +1,9 @@
 === Broadcast MU ===
 Contributors: unknowndomain
-Donate link: https://donate.cancerresearchuk.org/donate.asp
+Donate link: http://donate.cancerresearchuk.org/donate
 Tags: post, broadcast, crosspost, cross post, multipost, multicast, wpms, ms, multisite, blogs
 Requires at least: 3.4
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: 2.0
 License: GPLv3
 
@@ -16,6 +16,10 @@ Broadcast MU is a plugin for WordPress which allows you to broadcast a post to o
 You can enable this plugin on individual blogs or site wide.
 
 This plugin is for WordPress Multisite installations only because regular WordPress only supports having one blog anyway.
+
+Image credit: [Steve Harris]
+
+[Steve Harris]: http://www.flickr.com/photos/steveharris/1361908299/
 
 == Installation ==
 
